@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { data } from "./data";
-import next from "next";
 
 const Tabs = () => {
     const [currentTab, setCurrentTab] = useState(0);
@@ -19,15 +18,15 @@ const Tabs = () => {
 
                     let tabStyle = "w-52 p-4 text-center ";
                     if (selectedTab) {
-                        tabStyle += "bg-[#DEE6ED] ";
+                        tabStyle += "bg-[#DEE6ED]";
                     } else {
                         tabStyle += "bg-white ";
                     }
                     if (prevTab) {
-                        tabStyle += "rounded-br-3xl ";
+                        tabStyle += "rounded-br-3xl transition duration-100";
                     }
                     if (nextTab) {
-                        tabStyle += "rounded-tr-3xl ";
+                        tabStyle += "rounded-tr-3xl transition duration-100 ";
                     }
 
                     return (
