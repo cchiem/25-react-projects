@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
                 hostname: "unsplash.com",
                 pathname: "/**",
             },
+            {
+                protocol: "https",
+                hostname: "avatars.githubusercontent.com",
+                port: "",
+                pathname: "/u/**",
+            },
         ],
     },
     /* other config options here */

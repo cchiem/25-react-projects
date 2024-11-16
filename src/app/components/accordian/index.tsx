@@ -13,7 +13,7 @@ const Accordian = () => {
             );
     };
     return (
-        <div className="w-[400px] flex flex-col gap-4 h-max">
+        <div className="w-[400px] flex flex-col gap-4 h-max mt-10">
             {data?.map((dataItem, index) => (
                 <div
                     key={index}

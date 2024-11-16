@@ -41,35 +41,33 @@ const LoadMoreImage = () => {
         setCount(count + 1);
     };
     return (
-        <>
-            <div className="mt-4 h-[400px] w-[400px]">
-                <table className="bg-white border border-gray-300 shadow-lg rounded-lg left-0 right-0 ">
-                    <thead>
-                        <tr className="bg-blue-600 text-white uppercase text-sm leading-normal">
-                            <th className="py-3 px-6 text-left">Title</th>
+        <div className="mt-4 h-[400px] w-[400px]">
+            <table className="bg-white border border-gray-300 shadow-lg rounded-lg left-0 right-0 ">
+                <thead>
+                    <tr className="bg-blue-600 text-white uppercase text-sm leading-normal">
+                        <th className="py-3 px-6 text-left">Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products.map((product, index) => (
+                        <tr
+                            key={index}
+                            className="border-b border-gray-200 hover:bg-gray-100 transition duration-150 "
+                        >
+                            <td className="py-3 px-6 text-left">
+                                {product.title}
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {products.map((product, index) => (
-                            <tr
-                                key={index}
-                                className="border-b border-gray-200 hover:bg-gray-100 transition duration-150 "
-                            >
-                                <td className="py-3 px-6 text-left">
-                                    {product.title}
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <button
-                    onClick={() => loadMore()}
-                    className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-150"
-                >
-                    Load More
-                </button>
-            </div>
-        </>
+                    ))}
+                </tbody>
+            </table>
+            <button
+                onClick={() => loadMore()}
+                className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-150"
+            >
+                Load More
+            </button>
+        </div>
     );
 };
 
