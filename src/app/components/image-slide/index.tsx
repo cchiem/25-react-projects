@@ -58,49 +58,51 @@ const ImageSlide = ({ url, limit }: ImageSlideProps) => {
     };
 
     return (
-        <div className="flex flex-rol justify-center items-center w-[400px] h-[300px] overflow-hidden relative">
-            <BsArrowLeftCircleFill
-                className="absolute left-0 cursor-pointer"
-                onClick={prevImage}
-            ></BsArrowLeftCircleFill>
-            {
-                loading && (
-                    <Skeleton
-                        sx={{ bgcolor: "grey.700" }}
-                        variant="rounded"
-                        width={300}
-                        height={200}
-                        animation="wave"
-                        className="rounded-lg"
-                    />
-                ) // Five-line loading skeleton
-            }
-            {images &&
-                images.map((image, index) =>
-                    index === currentSlide ? (
-                        <Image
-                            key={image.id}
-                            src={image.download_url}
-                            alt=""
+        <div className="inline">
+            <div className="flex flex-rol justify-center items-center w-[400px] h-[300px] overflow-hidden relative">
+                <BsArrowLeftCircleFill
+                    className="absolute left-0 cursor-pointer"
+                    onClick={prevImage}
+                ></BsArrowLeftCircleFill>
+                {
+                    loading && (
+                        <Skeleton
+                            sx={{ bgcolor: "grey.700" }}
+                            variant="rounded"
                             width={300}
                             height={200}
-                            className="select-none rounded-lg"
+                            animation="wave"
+                            className="rounded-lg"
                         />
-                    ) : null
-                )}
-            <BsArrowRightCircleFill
-                className="absolute right-0 cursor-pointer"
-                onClick={nextImage}
-            ></BsArrowRightCircleFill>
-            <div className="flex flex-row gap-1 absolute bottom-0">
+                    ) // Five-line loading skeleton
+                }
                 {images &&
-                    images.map((_, index) =>
+                    images.map((image, index) =>
                         index === currentSlide ? (
-                            <FaRegCircle key={index}></FaRegCircle>
-                        ) : (
-                            <FaCircle key={index}></FaCircle>
-                        )
+                            <Image
+                                key={image.id}
+                                src={image.download_url}
+                                alt=""
+                                width={300}
+                                height={200}
+                                className="select-none rounded-lg"
+                            />
+                        ) : null
                     )}
+                <BsArrowRightCircleFill
+                    className="absolute right-0 cursor-pointer"
+                    onClick={nextImage}
+                ></BsArrowRightCircleFill>
+                <div className="flex flex-row gap-1 absolute bottom-0">
+                    {images &&
+                        images.map((_, index) =>
+                            index === currentSlide ? (
+                                <FaRegCircle key={index}></FaRegCircle>
+                            ) : (
+                                <FaCircle key={index}></FaCircle>
+                            )
+                        )}
+                </div>
             </div>
         </div>
     );
