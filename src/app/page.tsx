@@ -9,14 +9,14 @@ import CustomModal from "./components/click-outside-modal";
 
 const Home = () => {
     return (
-        <div className="flex justify-center items-center mt-10 flex-col gap-10">
-            {/* <Accordian />
+        <div className="flex justify-center items-center flex-col gap-10 border-2 border-black">
+            <Accordian />
             <ImageSlide url={"https://picsum.photos/v2/list"} limit={10} />
-            <Tabs /> */}
-            {/* <LoadMoreImage /> */}
+            <Tabs />
             <GithubFinder />
-            {/* <ProductPage /> */}
+            <ProductPage />
             <CustomModal />
+            <LoadMoreImage />
         </div>
     );
 };
