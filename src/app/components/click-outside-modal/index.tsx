@@ -10,11 +10,12 @@ const CustomModal = () => {
     return (
         <div>
             {showContent ? (
-                <div
-                    className="fixed inset-0 bg-black bg-opacity-30 z-50 flex justify-center items-center"
-                    ref={ref}
-                >
-                    <div className="bg-white rounded-lg w-[300px] h-[500px] flex justify-center items-center shadow-gray-950">
+                <div className="fixed inset-0 bg-black bg-opacity-30 z-50 flex justify-center items-center">
+                    <div
+                        className="bg-white rounded-lg w-[300px] h-[500px] flex justify-center items-center shadow-gray-950 flex-col gap-44"
+                        ref={ref}
+                    >
+                        <h1>This is Modal Content</h1>
                         <button
                             onClick={() => setShowContent(!showContent)}
                             className="bg-blue-600 p-4 rounded-xl hover:bg-blue-400 text-white"
