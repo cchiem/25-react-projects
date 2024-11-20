@@ -12,7 +12,7 @@ const ProductPage = () => {
     const size = searchParams.get("size") || "sm";
 
     return (
-        <div>
+        <div className="my-10 justify-center items-center flex flex-col w-[400px]">
             <h1>{`Size is: ${size}`}</h1>
             <h1>{`Color is: ${color}`}</h1>
             <Link

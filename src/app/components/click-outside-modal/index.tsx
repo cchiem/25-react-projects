@@ -25,7 +25,7 @@ const CustomModal = () => {
     return (
         <div>
             {showContent && (
-                <div className="fixed inset-0 bg-black bg-opacity-30 z-50 flex justify-center items-center">
+                <div className="fixed inset-0 bg-black bg-opacity-30 z-50 flex justify-center items-center backdrop-blur-sm">
                     <div
                         className={`bg-white rounded-lg w-[300px] h-[500px] flex justify-center items-center shadow-gray-950 flex-col gap-4 transition-all duration-250 ease-out transform ${
                             isVisible
@@ -47,7 +47,7 @@ const CustomModal = () => {
             {!showContent && (
                 <button
                     onClick={handleOpenModal}
-                    className="bg-blue-600 p-4 rounded-xl hover:bg-blue-400 text-white"
+                    className="fixed bottom-10 right-10 bg-blue-600 p-4 rounded-xl hover:bg-blue-400 text-white my-10"
                 >
                     Show Content
                 </button>

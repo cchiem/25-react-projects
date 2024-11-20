@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { data } from "./data";
 const Accordian = () => {
-    console.log(data);
     const [selected, setSelected] = useState<number[]>([]);
     const handleClick = (id: number) => {
         if (selected.indexOf(id) == -1) {
@@ -13,7 +12,7 @@ const Accordian = () => {
             );
     };
     return (
-        <div className="w-[400px] flex flex-col gap-4 h-max mt-10">
+        <div className="w-[400px] flex flex-col gap-4 h-max my-10">
             {data?.map((dataItem, index) => (
                 <div
                     key={index}

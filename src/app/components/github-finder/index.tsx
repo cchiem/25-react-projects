@@ -32,7 +32,7 @@ const GithubFinder = () => {
 
     return (
         <div>
-            <div className="flex flex-col justify-center items-center gap-10">
+            <div className="flex flex-col justify-center items-center gap-10 my-10">
                 <form className="flex gap-4" onSubmit={handleSubmit}>
                     <input
                         type="text"

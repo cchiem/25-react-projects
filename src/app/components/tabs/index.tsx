@@ -9,7 +9,7 @@ const Tabs = () => {
         setCurrentTab(index);
     };
     return (
-        <div className="bg-[#DEE6ED] w-[800px] outline outline-8 outline-white rounded-3xl text-[24px] font-bold m-4 flex ">
+        <div className="bg-[#DEE6ED] w-[800px] outline outline-8 outline-white rounded-3xl text-[24px] font-bold my-9 flex">
             <div className="flex flex-col">
                 {data.map((tab, index) => {
                     const selectedTab = currentTab === index;
