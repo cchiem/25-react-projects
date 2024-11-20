@@ -4,6 +4,8 @@ import ImageSlide from "./components/image-slide";
 import Tabs from "./components/tabs";
 import LoadMoreImage from "./components/load-more-images";
 import GithubFinder from "./components/github-finder";
+import ProductPage from "./components/search-params";
+import CustomModal from "./components/click-outside-modal";
 
 const Home = () => {
     return (
@@ -13,6 +15,8 @@ const Home = () => {
             <Tabs /> */}
             {/* <LoadMoreImage /> */}
             <GithubFinder />
+            {/* <ProductPage /> */}
+            <CustomModal />
         </div>
     );
 };

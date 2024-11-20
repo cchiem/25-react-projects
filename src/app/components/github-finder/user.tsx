@@ -7,10 +7,10 @@ const User = ({ userData }: { userData: UserDataType }) => {
             <div className="flex flex-col gap-4">
                 <Image
                     className="rounded-full outline outline-2 outline-gray-500"
-                    src={userData?.avatarUrl || ""}
+                    src={userData?.avatar_url || ""}
                     width={300}
                     height={300}
-                    alt={userData?.avatarUrl || ""}
+                    alt={userData?.avatar_url || ""}
                 />
                 <div>
                     <h1 className="font-bold text-3xl">{userData?.name}</h1>
@@ -33,7 +33,7 @@ const User = ({ userData }: { userData: UserDataType }) => {
                 </div>
                 <a
                     className="bg-blue-500 p-4 text-center rounded-lg my-4 text-white font-bold hover:cursor-pointer hover:bg-blue-700"
-                    href={userData?.htmlUrl}
+                    href={userData?.html_url}
                     target="_blank"
                 >
                     Profile URL

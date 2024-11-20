@@ -1,71 +1,48 @@
 "use client";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import User from "./user";
+
+import React, { useState } from "react";
 import { Skeleton } from "@mui/material";
+import User from "./user";
+import { useFetch } from "@/app/hooks/hooks";
 
 export interface UserDataType {
     name: string;
     login: string;
     followers: number;
     following: number;
-    htmlUrl: string;
-    avatarUrl: string;
+    html_url: string;
+    avatar_url: string;
 }
 
 const GithubFinder = () => {
     const [search, setSearch] = useState("cchiem");
-    const [loading, setLoading] = useState(true);
-    const [userData, setUserData] = useState<UserDataType>();
-
+    const [query, setQuery] = useState("cchiem");
+    const [data, loading] = useFetch<UserDataType>(
+        `https://api.github.com/users/${query}`
+    );
+    console.log(data);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        fetchGithubUser();
+        setQuery(search); // Triggers a new fetch by updating the query
     };
-
-    async function fetchGithubUser() {
-        try {
-            setLoading(true);
-            const res = await fetch(`https://api.github.com/users/${search}`);
-            const data = await res.json();
-            if (data) {
-                setUserData({
-                    name: data.name,
-                    login: data.login,
-                    followers: data.followers,
-                    following: data.following,
-                    htmlUrl: data.html_url,
-                    avatarUrl: data.avatar_url,
-                });
-                setLoading(false);
-                console.log(data);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        fetchGithubUser();
-    }, []);
 
     return (
         <div>
             <div className="flex flex-col justify-center items-center gap-10">
-                <form className="flex gap-4">
+                <form className="flex gap-4" onSubmit={handleSubmit}>
                     <input
                         type="text"
-                        placeholder="find someone"
+                        placeholder="Find someone"
                         value={search}
-                        onChange={(e) => handleChange(e)}
+                        onChange={handleChange}
                         className="rounded-md p-2"
                     />
                     <button
-                        onClick={handleSubmit}
+                        type="submit"
                         className="bg-blue-500 py-2 px-4 rounded-lg text-center text-white hover:bg-blue-700"
                     >
                         Search
@@ -93,12 +70,27 @@ const GithubFinder = () => {
                                     animation="wave"
                                 />
                             </div>
-
-                            <Skeleton variant="rectangular" animation="wave" />
+                            <Skeleton
+                                variant="rounded"
+                                animation="wave"
+                                width={300}
+                                height={100}
+                            />
                         </div>
                     </div>
                 ) : (
-                    <User userData={userData} />
+                    data && (
+                        <User
+                            userData={{
+                                name: data.name,
+                                login: data.login,
+                                followers: data.followers,
+                                following: data.following,
+                                html_url: data.html_url,
+                                avatar_url: data.avatar_url,
+                            }}
+                        />
+                    )
                 )}
             </div>
         </div>
