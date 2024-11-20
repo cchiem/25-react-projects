@@ -3,36 +3,54 @@ import { useClickOutside } from "@/app/hooks/hooks";
 import React, { useRef, useState } from "react";
 
 const CustomModal = () => {
-    const ref = useRef<HTMLDivElement | null>(null); // Correctly typing the ref
+    const ref = useRef<HTMLDivElement | null>(null);
     const [showContent, setShowContent] = useState(false);
-    useClickOutside(ref, () => setShowContent(false));
+    const [isVisible, setIsVisible] = useState(false); // For controlling animation states
+
+    useClickOutside(ref, () => {
+        setIsVisible(false);
+        setTimeout(() => setShowContent(false), 250); // Sync with animation duration
+    });
+
+    const handleOpenModal = () => {
+        setShowContent(true);
+        setTimeout(() => setIsVisible(true), 10); // Add slight delay to trigger animation
+    };
+
+    const handleCloseModal = () => {
+        setIsVisible(false);
+        setTimeout(() => setShowContent(false), 250);
+    };
 
     return (
         <div>
-            {showContent ? (
+            {showContent && (
                 <div className="fixed inset-0 bg-black bg-opacity-30 z-50 flex justify-center items-center">
                     <div
-                        className="bg-white rounded-lg w-[300px] h-[500px] flex justify-center items-center shadow-gray-950 flex-col gap-44"
+                        className={`bg-white rounded-lg w-[300px] h-[500px] flex justify-center items-center shadow-gray-950 flex-col gap-4 transition-all duration-250 ease-out transform ${
+                            isVisible
+                                ? "scale-100 opacity-100"
+                                : "scale-90 opacity-0"
+                        }`}
                         ref={ref}
                     >
                         <h1>This is Modal Content</h1>
                         <button
-                            onClick={() => setShowContent(!showContent)}
+                            onClick={handleCloseModal}
                             className="bg-blue-600 p-4 rounded-xl hover:bg-blue-400 text-white"
                         >
                             Close Content
                         </button>
                     </div>
                 </div>
-            ) : (
-                <div>
-                    <button
-                        onClick={() => setShowContent(!showContent)}
-                        className="bg-blue-600 p-4 rounded-xl hover:bg-blue-400 text-white"
-                    >
-                        Show Content
-                    </button>
-                </div>
+            )}
+            {!showContent && (
+                <button
+                    onClick={handleOpenModal}
+                    className="bg-blue-600 p-4 rounded-xl hover:bg-blue-400 text-white"
+                >
+                    Show Content
+                </button>
             )}
         </div>
     );
